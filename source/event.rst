@@ -23,6 +23,10 @@ A list of the different events.
 
 The ``message`` event, fired when a standard IRC message is received.
 
+Event attributes:
+
+* ``message`` - The actual message.
+
 Example:
 
 .. code-block:: javascript
@@ -67,3 +71,14 @@ Event attributes:
 
 * ``user``: A User object of the user that changed away status.
 * ``message``: The message of the AWAY user's AWAY status.
+
+.. data:: extended-join
+
+The ``extended-join`` event, fired when the client has the ``extended-join`` capability, and a user has joined a channel.
+
+Event attributes:
+
+* ``channel``: The channel the user joined.
+* ``user``: The nick of the user.
+* ``account``: The host of the user.
+* ``realname``: The realname of the user.
