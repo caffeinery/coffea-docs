@@ -30,7 +30,7 @@ Example:
 		// From README
 		client.on('message', function (event) {
 		  console.log('[' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
-			event.channel.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
+			event.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
 		});
 
 .. data:: cap_list
