@@ -39,7 +39,7 @@ Example:
 
 .. data:: cap_list
 .. data:: cap_ack
-.. data:: cap_nack
+.. data:: cap_nck
 
 Fired when ``CAP`` is received from the server. (More information available at https://github.com/ircv3/ircv3-specifications/blob/master/specification/capability-negotiation-3.1)
 
