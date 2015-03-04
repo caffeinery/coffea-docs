@@ -11,6 +11,12 @@ Contents
 
    connection
    event
+   channel
+   motd
+   format
+   cap
+   away
+   other
 
 Quickstart
 ==========
