@@ -1,14 +1,10 @@
-.. coffea documentation master file, created by
-   sphinx-quickstart on Mon Aug 18 22:48:49 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to coffea's documentation!
 ==================================
 
 .. warning:: This documentation is a work in progress.
 
-Contents:
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
@@ -16,7 +12,38 @@ Contents:
    connection
    event
 
+Quickstart
+==========
 
+This is all the code needed to get you started with coffea!
+
+.. code-block:: javascript
+
+    var client = require('coffea')(['chat.freenode.net', 'irc.oftc.net']); // or put just one network as a string
+    
+    client.on('motd', function (motd, network) {
+        client.join(['#foo', '#bar', '#baz'], network);
+    });
+    
+    client.on('message', function (event) {
+        console.log('[' + event.network + '][' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
+        //[freenode][#foo] nick: message
+        event.reply(event.message); // I'm a parrot
+    });
+
+For more information about events, click here: :ref:`event`
+
+With SSL
+========
+
+If you want to enable SSL for a connection, you have to use a network config object when connecting:
+
+.. code-block:: javascript
+
+    var client = require('coffea')({
+        host: 'chat.freenode.net',
+        ssl: true
+    });
 
 Indices and tables
 ==================
@@ -24,4 +51,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

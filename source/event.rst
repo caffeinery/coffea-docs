@@ -1,5 +1,5 @@
 Event API
-========
+=========
 
 
 Events are applied using the following example (basically standard NodeJS EventEmitter syntax):
@@ -7,19 +7,39 @@ Events are applied using the following example (basically standard NodeJS EventE
 .. code-block:: javascript
 
 		client.on('EVENT', // `EVENT` being any of the events listed in the documentation.
-		  function(event) { // callback function, called when event is fired
+		  function(event, err) { // callback function, called when event is fired
+		  	if (err) console.error('Event error:', err);
 		    console.log('Something happened!');
 		  });
 
+Event Object
+============
 
-Events
-======
+You may have noticed that we are passing an event argument to the event binding function. This is actually not just data but an object with an API to help you deal with events without hassle. Not all events are the same, so please check the various plugin documentations to see what events are available. The following functions and attributes are always available:
 
-A list of the different events.
+.. data:: network
 
+The network this event was triggered in.
+
+.. note:: The reply functions are only going to succeed when the ``channel`` or ``user`` attribute is available.
+
+.. data:: reply(message)
+
+Answer to a message (same channel/query as the event came from).
+
+.. data:: replyAction(message)
+
+Answer to a message with an action (``/me``).
+
+.. data:: replyNotice(message)
+
+Answer to a message with a notice.
+
+
+Core Events
+===========
 
 .. data:: message
-
 
 The ``message`` event, fired when a standard IRC message is received.
 
@@ -37,48 +57,36 @@ Example:
 			event.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
 		});
 
-.. data:: cap_list
-.. data:: cap_ack
-.. data:: cap_nck
 
-Fired when ``CAP`` is received from the server. (More information available at https://github.com/ircv3/ircv3-specifications/blob/master/specification/capability-negotiation-3.1)
+.. data:: ssl-error
 
-Event attributes:
-
-* ``capabilities``: The list of capabilities
-
-.. data:: motd
-
-The ``motd`` event, fired when the end of the MOTD (Message Of The Day) is received from the server.
+The ``ssl-error`` event, fired when there was an error establishing an SSL connection. If you're running with ``ssl_allow_invalid`` this event will still fire, but coffea will continue connecting to the server afterwards.
 
 Event attributes:
 
-* ``motd``: The actual MOTD sent by the server.
+* None
 
+Example:
 
 .. code-block:: javascript
 
-		// From README
-		client.on('message', function (event) {
-		  client.join('##test'); // autojoins a channel when properly connected
+		client.on('ssl-error', function (event, err) {
+			console.error('SSL Error:', err);
 		});
 
-.. data:: away
 
-The ``away`` event, fired when a user is AWAY.
+.. data:: disconnect
 
-Event attributes:
-
-* ``user``: A User object of the user that changed away status.
-* ``message``: The message of the AWAY user's AWAY status.
-
-.. data:: extended-join
-
-The ``extended-join`` event, fired when the client has the ``extended-join`` capability, and a user has joined a channel.
+The ``disconnect`` event, fired when the client was disconnected from a network.
 
 Event attributes:
 
-* ``channel``: The channel the user joined.
-* ``user``: The nick of the user.
-* ``account``: The host of the user.
-* ``realname``: The realname of the user.
+* None
+
+Example:
+
+.. code-block:: javascript
+
+		client.on('disconnect', function (event) {
+			console.log("We disconnected!");
+		});
