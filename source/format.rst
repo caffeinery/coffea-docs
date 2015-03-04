@@ -1,4 +1,4 @@
-Format Plugin
+Format plugin
 =============
 
 Formatting

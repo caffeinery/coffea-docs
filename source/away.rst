@@ -1,4 +1,4 @@
-Away Plugin
+Away plugin
 ===========
 
 Events

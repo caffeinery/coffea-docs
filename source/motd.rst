@@ -1,4 +1,4 @@
-MOTD Plugin
+MOTD plugin
 ===========
 
 Events
