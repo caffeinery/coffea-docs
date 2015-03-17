@@ -9,83 +9,83 @@ user api
 
 Create a new user object.
 
-.. function:: toString()
+.. function:: User.toString()
 
               :returns string hostmask: Hostmask of the user.
 
-.. function:: getNick()
+.. function:: User.getNick()
 
               :returns string Nick: Nick of the user.
 
-.. function:: getNetwork()
+.. function:: User.getNetwork()
 
               :returns string Network: Network of the user.
 
-.. function:: getUsername()
+.. function:: User.getUsername()
 
               :returns string Username: Username of the user.
 
-.. function:: getRealname()
+.. function:: User.getRealname()
 
               :returns string Realname: Realname of the user.
 
-.. function:: getHostname()
+.. function:: User.getHostname()
 
               :returns string Hostname: Hostname of the user.
 
-.. function:: getAccountName()
+.. function:: User.getAccountName()
 
               :returns string AccountName: AccountName of the user.
 
-.. function:: getChannels()
+.. function:: User.getChannels()
 
               :returns object Channels: Channels of the user. ``{'#channel': ['~']}``
 
-.. function:: getServer()
+.. function:: User.getServer()
 
               :returns string Server: Server the user is connected to.
 
-.. function:: getServerInfo()
+.. function:: User.getServerInfo()
 
               :returns string ServerInfo: ServerInfo of the Server the user is connected to.
 
-.. function:: getAway()
+.. function:: User.getAway()
 
               :returns boolean Away: Away status of the user.
 
-.. function:: getAccount()
+.. function:: User.getAccount()
 
               :returns string Account: Account of the user.
 
-.. function:: isRegistered()
+.. function:: User.isRegistered()
 
               :returns boolean registered: Registration status of the user.
 
-.. function:: isUsingSecureConnection()
+.. function:: User.isUsingSecureConnection()
 
               :returns boolean secureConnection: SSL status of the user (on/off).
 
-.. function:: getIdle()
+.. function:: User.getIdle()
 
               :returns int Idle: Idletime of the user.
 
-.. function:: getSignonTime()
+.. function:: User.getSignonTime()
 
               :returns string SignonTime: SignonTime of the user.
 
-.. function:: isOper()
+.. function:: User.isOper()
 
               :returns boolean oper: Oper status of the user.
 
-.. function:: notice(msg)
+.. function:: User.notice(msg)
 
               :param string msg: Notice message to send to the user.
 
-.. function:: say(msg)
+.. function:: User.say(msg)
 
               :param string msg: Message to send to the user.
 
-.. function:: whois(fn)
+.. function:: User.whois(fn)
 
               :param function fn: The callback function to be called when the call has been finished.
 

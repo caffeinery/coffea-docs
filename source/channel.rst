@@ -9,60 +9,60 @@ channel api
 
 Create a new channel object.
 
-.. function:: toString()
+.. function:: Channel.toString()
 
               :returns string hostmask: Hostmask of the channel.
 
-.. function:: getName()
+.. function:: Channel.getName()
 
               :returns string Name: Name of the channel.
 
-.. function:: getTopic()
+.. function:: Channel.getTopic()
 
               :returns string Topic: Topic of the channel.
 
-.. function:: getNames()
+.. function:: Channel.getNames()
 
               :returns object names: Nicks in the channel: ``{'nick': ['~']}``
 
-.. function:: getNetwork()
+.. function:: Channel.getNetwork()
 
               :returns string Network: Network of the channel.
 
-.. function:: userHasMode(user, mode)
+.. function:: Channel.userHasMode(user, mode)
 
               :param object user: The user to check the mode of in the channel.
               :param string mode: The mode to check for.
               :returns boolean hasMode: ``true`` if specified user has specified mode.
 
-.. function:: isUserInChannel(user)
+.. function:: Channel.isUserInChannel(user)
 
               :param object user: The user to check.
               :returns boolean hasMode: ``true`` if specified user is in this channel.
 
-.. function:: notice(msg)
+.. function:: Channel.notice(msg)
 
               :param string msg: Notice message to send to the user.
 
-.. function:: say(msg)
+.. function:: Channel.say(msg)
 
               :param string msg: Message to send to the user.
 
-.. function:: reply(user, msg)
+.. function:: Channel.reply(user, msg)
 
               :param object user: User to reply to.
               :param string msg: Message to send to the user.
 
-.. function:: kick(user, reason)
+.. function:: Channel.kick(user, reason)
 
               :param object user: User to kick from channel.
               :param string reason: Reason for the kick.
 
-.. function:: ban(mask)
+.. function:: Channel.ban(mask)
 
               :param string mask: Hostmask to ban.
 
-.. function:: unban(mask)
+.. function:: Channel.unban(mask)
 
               :param string mask: Hostmask to unban.
 

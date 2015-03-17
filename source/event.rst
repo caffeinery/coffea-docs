@@ -17,21 +17,21 @@ event object
 
 You may have noticed that we are passing an event argument to the event binding function. This is actually not just data but an object with an API to help you deal with events without hassle. Not all events are the same, so please check the various plugin documentations to see what events are available. The following functions and attributes are always available:
 
-.. coffeaevent:: network
+.. data:: network
 
 The network this event was triggered in.
 
 .. note:: The reply functions are only going to succeed when the ``channel`` or ``user`` attribute is available.
 
-.. coffeaevent:: reply(message)
+.. data:: reply(message)
 
 Answer to a message (same channel/query as the event came from).
 
-.. coffeaevent:: replyAction(message)
+.. data:: replyAction(message)
 
 Answer to a message with an action (``/me``).
 
-.. coffeaevent:: replyNotice(message)
+.. data:: replyNotice(message)
 
 Answer to a message with a notice.
 
