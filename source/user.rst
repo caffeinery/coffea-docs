@@ -130,6 +130,19 @@ Example:
 functions
 ---------
 
+.. coffeafunction:: getUser(nick, network)
+
+              :param string nick: The user you want to get by nickname.
+              :param object network: The network to execute the command on.
+
+Get a user object by nickname.
+
+.. coffeafunction:: isUser(user)
+
+              :param object user: The user object you want to check.
+
+Checks if the passed object is a valid user object.
+
 .. coffeafunction:: whois(target, network, fn)
 
               :param object target: The ``channel`` or ``user`` object to send this message to.
