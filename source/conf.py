@@ -29,9 +29,9 @@ import os
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+sys.path.append(os.path.abspath('exts'))
 extensions = [
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
+    'coffea'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -81,7 +81,7 @@ exclude_patterns = []
 #add_function_parentheses = True
 
 # If true, the current module name will be prepended to all description
-# unit titles (such as .. function::).
+# unit titles (such as .. coffeafunction::).
 #add_module_names = True
 
 # If true, sectionauthor and moduleauthor directives will be shown in the

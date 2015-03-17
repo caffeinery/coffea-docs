@@ -1,10 +1,10 @@
-MOTD plugin
+motd plugin
 ===========
 
-Events
+events
 ------
 
-.. data:: motd
+.. coffeaevent:: motd
 
 The ``motd`` event, fired when the end of the MOTD (Message Of The Day) is received from the server.
 
@@ -15,7 +15,7 @@ Event attributes:
 
 .. code-block:: javascript
 
-    client.on('message', function (event) {
+    client.on('message', function (err, event) {
       console.log("Connected to " + event.network + ". MOTD: " + event.motd);
       client.join('##test'); // autojoins a channel when properly connected
     });

@@ -1,10 +1,10 @@
-Away plugin
+away plugin
 ===========
 
-Events
+events
 ------
 
-.. data:: away
+.. coffeaevent:: away
 
 The ``away`` event, fired when an IRC AWAY event is received.
 
@@ -17,20 +17,19 @@ Example:
 
 .. code-block:: javascript
 
-    client.on('away', function (event) {
+    client.on('away', function (err, event) {
       console.log(event.user.getNick() + ' is now away: ' + event.message);
     });
 
 
-Commands
+functions
 --------
 
-.. function:: away(reason, network, fn)
-              
+.. coffeafunction:: away(reason, network, fn)
+
               :param string reason: The reason to be away (away message).
               :param object network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
-                                         
+
 
 Sets the client as away on ``network`` with an away message (``reason``).
-                                  
