@@ -93,9 +93,9 @@ plugins
    connection
    event
    user
+   channel
    message
    format
-   channel
    motd
    welcome
    server

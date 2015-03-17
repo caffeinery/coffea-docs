@@ -7,7 +7,7 @@ user api
            :param object client: Client object.
            :param object network: Network object.
 
-Create a new user on a network.
+Create a new user object.
 
 .. function:: toString()
 
