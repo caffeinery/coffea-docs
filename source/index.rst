@@ -41,8 +41,6 @@ This is all the code needed to get you started with coffea!
         event.reply(event.message); // I'm a parrot
     });
 
-For more information about events, click here: :ref:`event`
-
 
 with ssl
 --------
@@ -94,9 +92,14 @@ plugins
 
    connection
    event
+   message
+   format
+   user
    channel
    motd
-   format
+   welcome
+   server
    cap
    away
+   ping
    other

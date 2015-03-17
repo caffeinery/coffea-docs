@@ -26,7 +26,7 @@ We expose ``require('node-kaomoji').kaomoji`` via ``client.kaomoji``. See the no
 
 
 functions
---------
+---------
 
 .. coffeafunction:: unhighlight(message)
 

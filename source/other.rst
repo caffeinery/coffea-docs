@@ -22,7 +22,7 @@ Example:
 
 
 functions
---------
+---------
 
 .. coffeafunction:: pass(pass, network, fn)
 

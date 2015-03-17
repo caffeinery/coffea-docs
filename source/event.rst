@@ -39,25 +39,6 @@ Answer to a message with a notice.
 core events
 -----------
 
-.. coffeaevent:: message
-
-The ``message`` event, fired when a standard IRC message is received.
-
-Event attributes:
-
-* ``message`` - The actual message.
-
-Example:
-
-.. code-block:: javascript
-
-		// From README
-		client.on('message', function (err, event) {
-		  console.log('[' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
-			event.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
-		});
-
-
 .. coffeaevent:: ssl-error
 
 The ``ssl-error`` event, fired when there was an error establishing an SSL connection. If you're running with ``ssl_allow_invalid`` this event will still fire, but coffea will continue connecting to the server afterwards.

@@ -23,7 +23,7 @@ Example:
 
 
 functions
---------
+---------
 
 .. coffeafunction:: away(reason, network, fn)
 
