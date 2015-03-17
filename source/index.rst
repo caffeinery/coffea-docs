@@ -92,9 +92,9 @@ plugins
 
    connection
    event
+   user
    message
    format
-   user
    channel
    motd
    welcome
