@@ -1,6 +1,27 @@
 coffea documentation/api
 ========================
 
+|NPM version (>=0.4)| |Build Status| |Dependencies| |Documentation
+Status| |Code Climate|
+
+.. |NPM version (>=0.4)| image:: http://img.shields.io/npm/v/coffea.svg?style=flat-square
+   :target: http://browsenpm.org/package/coffea
+.. |Build Status| image:: http://img.shields.io/travis/caffeinery/coffea/master.svg?style=flat-square
+   :target: https://travis-ci.org/caffeinery/coffea
+.. |Dependencies| image:: https://img.shields.io/david/caffeinery/coffea.svg?style=flat-square
+   :target: https://david-dm.org/caffeinery/coffea
+.. |Documentation Status| image:: https://readthedocs.org/projects/coffea/badge/?style=flat-square&version=latest
+   :target: https://readthedocs.org/projects/coffea/?badge=latest
+.. |Code Climate| image:: http://img.shields.io/codeclimate/github/caffeinery/coffea.svg?style=flat-square
+   :target: https://codeclimate.com/github/caffeinery/coffea
+
+`event based and extensible irc client library with multi-network support`
+
+For support, report an issue on github or join our IRC channel at |##caffeinery @ chat.freenode.net|_
+
+.. |##caffeinery @ chat.freenode.net| image:: https://img.shields.io/badge/IRC-irc.freenode.net%23%23caffeinery-00a8ff.svg?style=flat-square
+.. _##caffeinery @ chat.freenode.net: https://webchat.freenode.net/?channels=%23%23caffeinery&uio=d4
+
 quickstart
 ==========
 
