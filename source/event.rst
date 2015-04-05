@@ -71,3 +71,16 @@ Example:
 		client.on('disconnect', function (err, event) {
 			console.log("We disconnected!");
 		});
+
+
+.. coffeaevent:: event
+
+The ``event`` event, fired when any other event is fired.
+
+Example:
+
+.. code-block:: javascript
+
+		client.on('event', function (name, err, event) {
+			console.log(name, "event fired:", err, event);
+		});
