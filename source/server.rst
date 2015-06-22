@@ -25,6 +25,12 @@ Event attributes:
 functions
 ---------
 
+.. coffeafunction:: quit(message, network)
+
+			  :param string message: The reason you want to show to others about why you quit.
+			  :param object network: The network to execute the command on.
+			  :param function fn: The callback function to be called when the call has been finished.
+
 .. coffeafunction:: getServerInfo(network)
 
               :param object network: The network to execute the command on.

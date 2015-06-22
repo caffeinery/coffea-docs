@@ -10,7 +10,7 @@ The format plugin is a bit special. You can use various formattings by using the
 
     event.reply(client.format.red + 'Roses are red.' + client.format.blue + 'Violets are blue.' + client.format.reset + 'And ZWSP' + client.format.zwsp + ' is invisible.');
 
-The following colors and formatting options are available: https://github.com/caffeinery/coffea/blob/master/lib/plugins/format.js#L2-L23
+The following colors and formatting options are available: https://github.com/caffeinery/coffea/blob/master/lib/plugins/format.js#L2-L26
 
 
 emoji
