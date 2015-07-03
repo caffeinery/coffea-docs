@@ -143,6 +143,12 @@ Get a user object by nickname.
 
 Checks if the passed object is a valid user object.
 
+.. coffeafunction:: isMe(user)
+
+              :param object user: The user object you want to check.
+
+Checks if the passed object is the same user object as the client.
+
 .. coffeafunction:: whois(target, network, fn)
 
               :param object target: The ``channel`` or ``user`` object to send this message to.
