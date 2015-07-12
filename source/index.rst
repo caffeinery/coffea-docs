@@ -15,14 +15,14 @@ Status| |Code Climate|
 .. |Code Climate| image:: https://img.shields.io/codeclimate/github/caffeinery/coffea.svg?style=flat-square
    :target: https://codeclimate.com/github/caffeinery/coffea
 
-`event based and extensible irc client library with multi-network support`
+`event based and extensible nodejs irc client library with multi-network support`
 
-For support, report an issue on github or join our IRC channel at |##caffeinery @ chat.freenode.net|_
+For support, report an issue on github or join our IRC channel at |#caffeinery @ chat.freenode.net|_
 
-.. |##caffeinery @ chat.freenode.net| image:: https://img.shields.io/badge/IRC-irc.freenode.net%23%23caffeinery-00a8ff.svg?style=flat-square
-.. _##caffeinery @ chat.freenode.net: https://webchat.freenode.net/?channels=%23%23caffeinery&uio=d4
+.. |#caffeinery @ chat.freenode.net| image:: https://img.shields.io/badge/IRC-irc.freenode.net%23caffeinery-00a8ff.svg?style=flat-square
+.. _##caffeinery @ chat.freenode.net: https://webchat.freenode.net/?channels=%23caffeinery&uio=d4
 
-If you want to support coffea, please consider donating: |gratipay.com/omnidan/|_
+If you want to support coffea, please consider donating (it helps me keeping the project active and alive!): |gratipay.com/omnidan/|_
 
 .. |gratipay.com/omnidan/| image:: https://img.shields.io/gratipay/omnidan.svg?style=flat-square
 .. _gratipay.com/omnidan/: https://gratipay.com/omnidan/
