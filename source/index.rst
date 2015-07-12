@@ -20,7 +20,7 @@ Status| |Code Climate|
 For support, report an issue on github or join our IRC channel at |#caffeinery @ chat.freenode.net|_
 
 .. |#caffeinery @ chat.freenode.net| image:: https://img.shields.io/badge/IRC-irc.freenode.net%23caffeinery-00a8ff.svg?style=flat-square
-.. _##caffeinery @ chat.freenode.net: https://webchat.freenode.net/?channels=%23caffeinery&uio=d4
+.. _#caffeinery @ chat.freenode.net: https://webchat.freenode.net/?channels=%23caffeinery&uio=d4
 
 If you want to support coffea, please consider donating (it helps me keeping the project active and alive!): |gratipay.com/omnidan/|_
 
