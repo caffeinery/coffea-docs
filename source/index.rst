@@ -56,9 +56,33 @@ If you want to enable SSL for a connection, you have to use a network config obj
 
     var client = require('coffea')({
         host: 'chat.freenode.net',
-        ssl: true
+        ssl: true,
+        // ssl_allow_invalid: true // uncomment this if the server has a self signed certificate, make sure to listen on('ssl-error') to catch bad certificates
     });
 
+
+full config
+-----------
+
+For multiple networks, use a JavaScript array with multiple config objects inside.
+
+.. code-block:: javascript
+
+   var client = require('coffea')({
+      host: 'chat.freenode.net',
+      port: 6667, // default value: 6667
+      ssl: false, // set to true if you want to use ssl
+      ssl_allow_invalid: false, // set to true if the server has a custom ssl certificate
+      nick: 'test', // default value: 'coffea' with random number
+      username: 'test', // default value: username = nick
+      realname: 'test', // default value: realname = nick
+      pass: 'sup3rS3cur3P4ssw0rd', // by default no password will be sent
+      nickserv: {
+        username: 'test',
+        password: 'l33tp455w0rD'
+      },
+      throttling: 250 // default value: 250ms, 1 message every 250ms, disable by setting to false
+   });
 
 api
 ===
