@@ -36,15 +36,21 @@ This is all the code needed to get you started with coffea!
 
     var client = require('coffea')(['chat.freenode.net', 'irc.oftc.net']); // or put just one network as a string
 
-    client.on('motd', function (err, event) {
+    client.on('motd', function (event) {
         client.join(['#foo', '#bar', '#baz'], event.network);
     });
 
-    client.on('message', function (err, event) {
+    client.on('message', function (event) {
         console.log('[' + event.network + '][' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
         //[freenode][#foo] nick: message
         event.reply(event.message); // I'm a parrot
     });
+   
+   client.on('command', function (event) {
+       if (event.cmd === 'ping') { // respond to `!ping SOMETHING` with `SOMETHING`, or `pong`, if SOMETHING is not specified
+           event.reply(event.args.length > 0 ? event.args.join(' ') : 'pong');
+       }
+   });
 
 
 with ssl
@@ -69,19 +75,21 @@ For multiple networks, use a JavaScript array with multiple config objects insid
 .. code-block:: javascript
 
    var client = require('coffea')({
-      host: 'chat.freenode.net',
-      port: 6667, // default value: 6667
-      ssl: false, // set to true if you want to use ssl
-      ssl_allow_invalid: false, // set to true if the server has a custom ssl certificate
-      nick: 'test', // default value: 'coffea' with random number
-      username: 'test', // default value: username = nick
-      realname: 'test', // default value: realname = nick
-      pass: 'sup3rS3cur3P4ssw0rd', // by default no password will be sent
-      nickserv: {
-        username: 'test',
-        password: 'l33tp455w0rD'
-      },
-      throttling: 250 // default value: 250ms, 1 message every 250ms, disable by setting to false
+       host: 'chat.freenode.net',
+       port: 6667, // default value: 6667
+       ssl: false, // set to true if you want to use ssl
+       ssl_allow_invalid: false, // set to true if the server has a custom ssl certificate
+       prefix: '!', // used to parse commands and emit on('command') events, default: !
+       channels: ['#foo', '#bar'], // autojoin channels, default: []
+       nick: 'test', // default value: 'coffea' with random number
+       username: 'test', // default value: username = nick
+       realname: 'test', // default value: realname = nick
+       pass: 'sup3rS3cur3P4ssw0rd', // by default no password will be sent
+       nickserv: {
+           username: 'test',
+           password: 'l33tp455w0rD'
+       },
+       throttling: 250 // default value: 250ms, 1 message every 250ms, disable by setting to false
    });
 
 api
@@ -102,9 +110,7 @@ this (make sure to replace ``event`` with the event name):
 
 .. code-block:: javascript
 
-    client.on('event', function (err, event) {
-        if (err) throw err; // something bad happened!
-
+    client.on('event', function (event) {
         console.log(event); // do something with event here
     });
 
