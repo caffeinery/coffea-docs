@@ -6,11 +6,10 @@ Events are applied using the following example (basically standard NodeJS EventE
 
 .. code-block:: javascript
 
-		client.on('EVENT', // `EVENT` being any of the events listed in the documentation.
-		  function(err, event) { // callback function, called when event is fired
-		  	if (err) console.error('Event error:', err);
-		    console.log('Something happened!');
-		  });
+    client.on('EVENT', // `EVENT` being any of the events listed in the documentation.
+        function (event) { // callback function, called when event is fired
+            console.log('Something happened!');
+        });
 
 event object
 ------------
@@ -27,13 +26,22 @@ The network this event was triggered in.
 
 Answer to a message (same channel/query as the event came from).
 
+Example:
+
+.. code-block:: javascript
+
+    client.on('command', function (event) {
+        if (event.cmd === 'ping') event.reply('pong');
+    });
+
+
 .. data:: replyAction(message)
 
-Answer to a message with an action (``/me``).
+Answer to a message with an action (``/me``). Works like ``reply(message)``.
 
 .. data:: replyNotice(message)
 
-Answer to a message with a notice.
+Answer to a message with a notice. Works like ``reply(message)``.
 
 
 core events
@@ -51,9 +59,9 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('ssl-error', function (err, event) {
-			console.error('SSL Error:', err);
-		});
+    client.on('ssl-error', function (event) {
+        console.error('SSL Error:', err);
+    });
 
 
 .. coffeaevent:: disconnect
@@ -68,9 +76,9 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('disconnect', function (err, event) {
-			console.log("We disconnected!");
-		});
+    client.on('disconnect', function (event) {
+        console.log("We disconnected!");
+    });
 
 
 .. coffeaevent:: event
@@ -81,6 +89,6 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('event', function (name, err, event) {
-			console.log(name, "event fired:", err, event);
-		});
+    client.on('event', function (name, err, event) {
+        console.log(name, "event fired:", err, event);
+    });

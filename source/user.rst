@@ -5,7 +5,7 @@ user api
 
            :param string nick: The users nickname
            :param object client: Client object.
-           :param object network: Network object.
+           :param string network: Network object.
 
 Create a new user object.
 
@@ -106,9 +106,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('nick', function (err, event) {
-		    console.log(oldNick + " is now " + event.user.getNick());
+    client.on('nick', function (event) {
+        console.log(event.oldNick + " is now " + event.user.getNick());
     });
+
 
 .. coffeaevent:: whois
 
@@ -122,10 +123,11 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('whois', function (err, event) {
+    client.on('whois', function (err, event) {
         if (err) console.err("Couldn't whois:", err);
         console.log(event);
     });
+
 
 functions
 ---------
@@ -133,9 +135,17 @@ functions
 .. coffeafunction:: getUser(nick, network)
 
               :param string nick: The user you want to get by nickname.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
 
 Get a user object by nickname.
+
+Example:
+
+.. code-block:: javascript
+
+    var user = client.getUser("#caffeinery", event.network); // usage in an event listener
+    var user = client.getUser("#caffeinery", "freenode"); // send to specific network
+
 
 .. coffeafunction:: isUser(user)
 
@@ -143,33 +153,102 @@ Get a user object by nickname.
 
 Checks if the passed object is a valid user object.
 
+Example:
+
+.. code-block:: javascript
+
+    var user = client.getUser("#caffeinery", event.network); // usage in an event listener
+    console.log(client.isUser(user)); // prints `true`
+
+
 .. coffeafunction:: isMe(user)
 
               :param object user: The user object you want to check.
 
 Checks if the passed object is the same user object as the client.
 
+Example:
+
+.. code-block:: javascript
+
+    if (client.isMe(event.user)) {
+        console.log("message was from me");
+    } else {
+        console.log("message was from somebody else");
+    }
+
+
 .. coffeafunction:: whois(target, network, fn)
 
               :param object target: The ``channel`` or ``user`` object to send this message to.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Send a whois request to the server.
+
+Example:
+
+.. code-block:: javascript
+
+    client.whois("omnidan", event.network, function (event) {
+        console.log(event.whois);
+    }); // usage in an event listener
+
+    client.whois("omnidan", "freenode", function (event) {
+        console.log(event.whois);
+    }); // send to specific network
+
 
 .. coffeafunction:: identify(username, password, network, fn)
 
               :param string username: The username to identify with.
               :param string password: The password to identify with.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Identifies the user with nickserv.
 
+Example:
+
+.. code-block:: javascript
+
+    client.on('motd', function (event) {
+        client.identify("omnidan", "p@$$w0rd", event.network); // log in with nickserv
+    });
+
+You can specify this data in the config too like this:
+
+.. code-block:: javascript
+
+    {
+      nickserv: {
+        username: 'test',
+        password: 'l33tp455w0rD'
+      }
+    }
+
+
 .. coffeafunction:: nick(nick, network, fn)
 
               :param string nick: The nickname you want to use now.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Change your nickname to the specified nick.
+
+Example:
+
+.. code-block:: javascript
+
+    client.on('motd', function (event) {
+        client.nick("omnidan", event.network); // log in with nickserv
+    });
+
+You can specify this data in the config too like this:
+
+.. code-block:: javascript
+
+    {
+      nick: 'omnidan'
+    }
+

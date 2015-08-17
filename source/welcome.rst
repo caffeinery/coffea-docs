@@ -18,6 +18,6 @@ Event attributes:
 
 .. code-block:: javascript
 
-    client.on('welcome', function (err, event) {
-      console.log("Welcome " + event.nick + ": " + event.message);
+    client.on('welcome', function (event) {
+    	console.log("Welcome " + event.nick + ": " + event.message);
     });

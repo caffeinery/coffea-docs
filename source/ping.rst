@@ -16,6 +16,6 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('pong', function (err, event) {
+    client.on('pong', function (event) {
         console.log("PONG");
     });

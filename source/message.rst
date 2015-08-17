@@ -19,11 +19,10 @@ Example:
 
 .. code-block:: javascript
 
-		// From README
-		client.on('message', function (err, event) {
-		  console.log('[' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
-			event.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
-		});
+    client.on('message', function (event) {
+        console.log('[' + event.channel.getName() + '] ' + event.user.getNick() + ': ' + event.message);
+        event.reply('I logged to the console!'); // Says to the relevent user "I logged to the console!", either in PM or the channel.
+    });
 
 
 .. coffeaevent:: privatemessage
@@ -41,11 +40,10 @@ Example:
 
 .. code-block:: javascript
 
-		// From README
-		client.on('privatemessage', function (err, event) {
-		  console.log('[PM] ' + event.user.getNick() + ': ' + event.message);
-			event.reply(':)'); // Says to the relevent user ":)", in PM
-		});
+    client.on('privatemessage', function (event) {
+        console.log('[PM] ' + event.user.getNick() + ': ' + event.message);
+        event.reply(':)'); // Says to the relevent user ":)", in PM
+    });
 
 
 .. coffeaevent:: notice
@@ -63,9 +61,8 @@ Example:
 
 .. code-block:: javascript
 
-		// From README
-		client.on('notice', function (err, event) {
-		  console.log('[' + event.to + '] ' + event.from.getNick() + ': ' + event.message);
+    client.on('notice', function (event) {
+        console.log('[' + event.to + '] ' + event.from.getNick() + ': ' + event.message);
     });
 
 
@@ -75,29 +72,62 @@ functions
 
 .. coffeafunction:: send(target, msg, network, fn)
 
-              :param object target: The ``channel`` or ``user`` object to send this message to.
+              :param object/string target: The ``channel`` or ``user`` object to send this message to.
               :param string msg: The message you want to send.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Send an IRC message to a channel or a user.
+
+Example:
+
+.. code-block:: javascript
+
+    client.send("#caffeinery", "Hiii", event.network); // usage in an event listener
+    client.send("#caffeinery", "Hiii", "freenode"); // send to specific network
+
+    client.send(event.channel ? event.channel : event.user, "Hiii", event.network); // reply to message
+    // ...or use the event.reply helper
+    event.reply("Hiii!"); // reply to message
 
 
 .. coffeafunction:: action(target, msg, network, fn)
 
               :param object target: The ``channel`` or ``user`` object to send this action to.
               :param string msg: The action you want to send.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
-Send an IRC action to a channel or a user. (This is the /me command)
+Send an IRC action to a channel or a user. (This is the /me command) Works like ``send(target, msg, network, fn)``.
+
+Example:
+
+.. code-block:: javascript
+
+    client.action("#caffeinery", "Hiii", event.network); // usage in an event listener
+    client.action("#caffeinery", "Hiii", "freenode"); // send to specific network
+
+    client.action(event.channel ? event.channel : event.user, "Hiii", event.network); // reply to message
+    // ...or use the event.replyAction helper
+    event.replyAction("Hiii!"); // reply to message
 
 
 .. coffeafunction:: notice(target, msg, network, fn)
 
               :param object target: The ``channel`` or ``user`` object to send this notice to.
               :param string msg: The notice you want to send.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
-Send an IRC notice to a channel or a user.
+Send an IRC notice to a channel or a user. Works like ``send(target, msg, network, fn)``.
+
+Example:
+
+.. code-block:: javascript
+
+    client.notice("#caffeinery", "Hiii", event.network); // usage in an event listener
+    client.notice("#caffeinery", "Hiii", "freenode"); // send to specific network
+
+    client.notice(event.channel ? event.channel : event.user, "Hiii", event.network); // reply to message
+    // ...or use the event.replyNotice helper
+    event.replyNotice("Hiii!"); // reply to message

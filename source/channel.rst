@@ -5,7 +5,7 @@ channel api
 
            :param string name: The channel name
            :param object client: Client object.
-           :param object network: Network object.
+           :param string network: Network object.
 
 Create a new channel object.
 
@@ -83,10 +83,11 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('invite', function (err, event) {
-		    console.log(event.target.getNick() + " got invited to "
-                    + event.channel.getName() + " by " + event.user.getNick());
+    client.on('invite', function (event) {
+        console.log(event.target.getNick() + " got invited to "
+            + event.channel.getName() + " by " + event.user.getNick());
     });
+
 
 .. coffeaevent:: topic
 
@@ -105,9 +106,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('topic', function (err, event) {
-		    console.log(event.channel.getName() + ":", event.topic);
+    client.on('topic', function (event) {
+        console.log(event.channel.getName() + ":", event.topic);
     });
+
 
 .. coffeaevent:: join
 
@@ -122,9 +124,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('join', function (err, event) {
-		    console.log(event.user.getNick() + " joined " + event.channel.getName());
+    client.on('join', function (event) {
+        console.log(event.user.getNick() + " joined " + event.channel.getName());
     });
+
 
 .. coffeaevent:: names
 
@@ -139,9 +142,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('names', function (err, event) {
-		    console.log(event.channel.getName() + ":", event.names);
+    client.on('names', function (event) {
+        console.log(event.channel.getName() + ":", event.names);
     });
+
 
 .. coffeaevent:: mode
 
@@ -159,9 +163,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('mode', function (err, event) {
-		    console.log(event.channel.getName() + ":", event.mode);
+    client.on('mode', function (event) {
+        console.log(event.channel.getName() + ":", event.mode);
     });
+
 
 .. coffeaevent:: kick
 
@@ -178,9 +183,10 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('kick', function (err, event) {
-		    console.log(event.channel.getName() + ":", event.user.getNick(), "was kicked.");
+    client.on('kick', function (event) {
+        console.log(event.channel.getName() + ":", event.user.getNick(), "was kicked.");
     });
+
 
 .. coffeaevent:: part
 
@@ -196,8 +202,8 @@ Example:
 
 .. code-block:: javascript
 
-		client.on('part', function (err, event) {
-		    console.log(event.user.getNick(), "parted channels", event.channels);
+    client.on('part', function (event) {
+        console.log(event.user.getNick(), "parted channels", event.channels);
     });
 
 
@@ -331,7 +337,7 @@ Example:
 
               :param array/object/string channels: The channel(s) you want to kick from.
               :param array/string nicks: The nick(s) you want to kick.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Kick user from a channel.
@@ -359,13 +365,15 @@ Example:
 .. code-block:: javascript
 
     client.names("#caffeinery", event.network, function (names) {
-      console.log(names);
+        console.log(names);
     }); // usage in an event listener
+
     client.names("#caffeinery", "freenode, function (names) {
-      console.log(names);
+        console.log(names);
     }); // send to specific network
+
     client.names(["#caffeinery", "#omnidan"], event.network, function (names) {
-      console.log(names);
+        console.log(names);
     }); // get names from multiple channels
 
 

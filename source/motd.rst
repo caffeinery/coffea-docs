@@ -12,10 +12,11 @@ Event attributes:
 
 * ``motd``: The actual MOTD sent by the server.
 
+Example:
 
 .. code-block:: javascript
 
-    client.on('message', function (err, event) {
-      console.log("Connected to " + event.network + ". MOTD: " + event.motd);
-      client.join('##test'); // autojoins a channel when properly connected
+    client.on('motd', function (event) {
+    	console.log("Connected to " + event.network + ". MOTD: " + event.motd);
+    	client.join('##test'); // autojoins a channel when properly connected
     });
