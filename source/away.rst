@@ -31,5 +31,12 @@ functions
               :param object network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
-
 Sets the client as away on ``network`` with an away message (``reason``).
+
+Example:
+
+.. code-block:: javascript
+
+    client.away("busy", event.network); // usage in an event listener
+    client.away("busy", "freenode"); // send to specific network
+    client.away("busy"); // send to all networks

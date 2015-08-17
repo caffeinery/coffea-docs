@@ -204,18 +204,36 @@ Example:
 functions
 ---------
 
-.. coffeafunction:: getChannelList()
+.. coffeafunction:: getChannelList(network)
 
+              :param string network: The network to execute the command on.
               :return array channelList: List of channels.
 
 Get a list of channels.
 
+Example:
+
+.. code-block:: javascript
+
+    var channels = client.getChannelList(event.network); // usage in an event listener
+    var channels = client.getChannelList("freenode"); // send to specific network
+    var channels = client.getChannelList(); // get object of networks and channels
+
+
 .. coffeafunction:: getChannel(name, network)
 
-              :param object name: The name of the channel you want to get.
-              :param object network: The network to execute the command on.
+              :param string name: The name of the channel you want to get.
+              :param string network: The network to execute the command on.
 
 Gets a channel by name.
+
+Example:
+
+.. code-block:: javascript
+
+    var channel = client.getChannel("#caffeinery", event.network); // usage in an event listener
+    var channel = client.getChannel("#caffeinery", "freenode"); // send to specific network
+
 
 .. coffeafunction:: isChannel(channel)
 
@@ -223,64 +241,196 @@ Gets a channel by name.
 
 Checks if the passed object is a valid channel object.
 
+Example:
+
+.. code-block:: javascript
+
+    var channel = client.getChannel("#caffeinery", event.network); // usage in an event listener
+    console.log(client.isChannel(channel)); // prints `true`
+
+
 .. coffeafunction:: invite(name, channel, network, fn)
 
               :param string name: The name of the user you want to invite.
-              :param object channel: The channel you want to invite him to.
-              :param object network: The network to execute the command on.
+              :param string/object channel: The channel you want to invite him to.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Invites a user to a channel.
 
+Example:
+
+.. code-block:: javascript
+
+    client.invite("omnidan", "#caffeinery", event.network); // usage in an event listener
+    client.invite("omnidan", "#caffeinery", "freenode"); // send to specific network
+
+
 .. coffeafunction:: topic(channel, topic, network, fn)
 
-              :param object channel: The channel you want to set the topic in.
+              :param string/object channel: The channel you want to set the topic in.
               :param string topic: The topic you want to set.
-              :param object network: The network to execute the command on.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Sets the topic of a channel.
 
+Example:
+
+.. code-block:: javascript
+
+    client.topic("#caffeinery", "welcome to caffeinery!", event.network); // usage in an event listener
+    client.topic("#caffeinery", "welcome to caffeinery!", "freenode"); // send to specific network
+
+
 .. coffeafunction:: join(channels, keys, network, fn)
 
-              :param array channels: The channels you want to join.
-              :param array keys: The keys for the channels you want to join.
-              :param object network: The network to execute the command on.
+              :param string/object/array channels: The channel(s) you want to join.
+              :param string/array keys: The key(s) for the channel(s) you want to join.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Joins channels.
 
-.. coffeafunction:: ircNames(channel, network, fn)
+Example:
 
-              :param array channels: The channel you want to get the nicknames from.
-              :param object network: The network to execute the command on.
+.. code-block:: javascript
+
+    client.join("#caffeinery", event.network); // usage in an event listener
+    client.join("#caffeinery", "freenode"); // send to specific network
+    client.join(["#caffeinery", "#omnidan"], event.network); // join multiple channels
+
+Example (Join password protected channels):
+
+.. code-block:: javascript
+
+    client.join("#caffeinery", event.network); // usage in an event listener
+    client.join("#caffeinery", "freenode"); // send to specific network
+    client.join(["#caffeinery", "#omnidan"], event.network); // join multiple channels
+
+
+.. coffeafunction:: part(channels, msg, network, fn)
+
+              :param string/object/array channels: The channels you want to kick from.
+              :param string msg: The part message.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
-Gets users from a channel.
+Parts channels.
 
-.. coffeafunction:: ircMode(target, flags, network, fn)
+Example:
 
-              :param string target: Target for the mode change, can be a user or channel.
-              :param string flags: Flags of the mode change.
-              :param object network: The network to execute the command on.
-              :param function fn: The callback function to be called when the call has been finished.
+.. code-block:: javascript
 
-Sets modes.
+    client.part("#caffeinery", "byeee", event.network); // usage in an event listener
+    client.part("#caffeinery", "byeee", "freenode"); // send to specific network
+    client.part(["#caffeinery", "#omnidan"], "byeee", event.network); // part multiple channels
 
-.. coffeafunction:: ircKick(channels, nicks, msg, network, fn)
 
-              :param array channels: The channels you want to kick from.
-              :param array nicks: The nicks you want to kick.
+.. coffeafunction:: kick(channels, nicks, msg, network, fn)
+
+              :param array/object/string channels: The channel(s) you want to kick from.
+              :param array/string nicks: The nick(s) you want to kick.
               :param object network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
 Kick user from a channel.
 
-.. coffeafunction:: ircPart(channels, msg, network, fn)
+Example:
 
-              :param array channels: The channels you want to kick from.
-              :param string msg: The part message.
-              :param object network: The network to execute the command on.
+.. code-block:: javascript
+
+    client.kick("#caffeinery", "omnidan", "bye!", event.network); // kick user from specific channel
+    client.kick(event.channel, "omnidan", "bye!", event.network); // kick user from current channel
+    client.kick(["#caffeinery", "#omnidan"], "omnidan", "bye!", event.network); // kick user from multiple channels
+    client.kick("#caffeinery", ["omnidan", "np_coffea"], "bye!", event.network); // kick multiple users from channel
+
+
+.. coffeafunction:: names(channels, network, fn)
+
+              :param string/object/array channels: The channel you want to get the nicknames from.
+              :param string network: The network to execute the command on.
               :param function fn: The callback function to be called when the call has been finished.
 
-Parts channels.
+Gets users from a channel.
+
+Example:
+
+.. code-block:: javascript
+
+    client.names("#caffeinery", event.network, function (names) {
+      console.log(names);
+    }); // usage in an event listener
+    client.names("#caffeinery", "freenode, function (names) {
+      console.log(names);
+    }); // send to specific network
+    client.names(["#caffeinery", "#omnidan"], event.network, function (names) {
+      console.log(names);
+    }); // get names from multiple channels
+
+
+.. coffeafunction:: mode(target, flags, network, fn)
+
+              :param string target: Target for the mode change, can be a user or channel.
+              :param string flags: Flags of the mode change.
+              :param string network: The network to execute the command on.
+              :param function fn: The callback function to be called when the call has been finished.
+
+Sets modes.
+
+.. note::
+
+   You'll probably want to use the `umode` and `chanmode` functions instead of this function.
+
+Example:
+
+.. code-block:: javascript
+
+    client.mode("omnidan", "+p", event.network); // set mode on specific user
+    client.mode(client.me, "+p", event.network); // set mode on current client
+    client.mode("#caffeinery", "+v omnidan", event.network); // voice a user in a specific channel
+    client.mode(event.channel, "+v omnidan", event.network); // voice a user in the current channel
+
+
+.. coffeafunction:: umode(flags, network, fn)
+
+              :param string flags: Flags of the mode change.
+              :param string network: The network to execute the command on.
+              :param function fn: The callback function to be called when the call has been finished.
+
+Sets modes on the current client.
+
+Example:
+
+.. code-block:: javascript
+
+    client.umode("+p", event.network); // set mode on current client
+
+
+.. coffeafunction:: chanmode(channel, mode, target, network, fn)
+
+              :param string channel: Channel to change modes on.
+              :param string mode: Consists of +/- and a mode character, e.g. `+v`, `-o`
+              :param array/object/string target: Target for the mode change, can be (a) user(s) or channel(s).
+              :param string network: The network to execute the command on.
+              :param function fn: The callback function to be called when the call has been finished.
+
+Sets modes on a channel.
+
+.. note::
+
+   There are helper functions that work like `client.chanmode`, but without having to specify the `mode`: voice, devoice, op, deop, hop, dehop
+
+Example:
+
+.. code-block:: javascript
+
+    client.chanmode("#caffeinery", "+v", "omnidan", event.network); // voice a user in a specific channel
+    client.chanmode(event.channel, "+v", "omnidan", event.network); // voice a user in the current channel
+    client.chanmode(event.channel, "+v", ["omnidan", "np_coffea"], event.network); // voice multiple users in the current channel
+
+    // or using helper functions...
+    client.voice("#caffeinery", "omnidan", event.network); // voice a user in a specific channel
+    client.voice(event.channel, "+v", "omnidan", event.network); // voice a user in the current channel
+    client.voice(event.channel, "+v", ["omnidan", "np_coffea"], event.network); // voice multiple users in the current channel
+
