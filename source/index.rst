@@ -53,6 +53,12 @@ This is all the code needed to get you started with coffea!
    });
 
 
+tutorial
+--------
+
+For an extensive guide on getting started with coffea, make sure to read *Writing an IRC Bot with JavaScript/Node.js and coffea* on medium: https://medium.com/@omnidan/writing-an-irc-bot-with-javascript-node-js-and-coffea-6c13aa4907e9
+
+
 with ssl
 --------
 
