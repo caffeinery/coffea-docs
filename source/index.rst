@@ -54,6 +54,25 @@ This is all the code needed to get you started with coffea!
        }
    });
 
+debugging
+---------
+
+Make sure to listen to ``error`` events to see possible errors/warnings:
+
+.. code-block:: javascript
+
+    client.on('error', function (err, event) {
+        console.log(event.name, err.stack);
+    });
+
+You can also add the ``err`` parameter to any event listener (change from ``function (event)`` to ``function (err, event)``:
+
+.. code-block:: javascript
+
+    client.on('whois', function (err, event) {
+        if (err) console.log("WHOIS ERROR:", err.stack);
+        console.log("whois:", event);
+    });
 
 tutorial
 --------
