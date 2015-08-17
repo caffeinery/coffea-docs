@@ -431,6 +431,6 @@ Example:
 
     // or using helper functions...
     client.voice("#caffeinery", "omnidan", event.network); // voice a user in a specific channel
-    client.voice(event.channel, "+v", "omnidan", event.network); // voice a user in the current channel
-    client.voice(event.channel, "+v", ["omnidan", "np_coffea"], event.network); // voice multiple users in the current channel
+    client.voice(event.channel, "omnidan", event.network); // voice a user in the current channel
+    client.voice(event.channel, ["omnidan", "np_coffea"], event.network); // voice multiple users in the current channel
 
