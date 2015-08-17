@@ -1,3 +1,5 @@
+.. include:: ./globals.rst
+
 ping plugin
 ===========
 

@@ -1,3 +1,5 @@
+.. include:: ./globals.rst
+
 away plugin
 ===========
 

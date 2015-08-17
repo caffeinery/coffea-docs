@@ -1,0 +1,2 @@
+.. meta::
+   :theme-color: #2980B9
