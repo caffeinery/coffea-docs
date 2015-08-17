@@ -6,6 +6,28 @@ other plugins
 events
 ------
 
+.. coffeaevent:: error
+
+The ``error`` event, fired when any error happens.
+
+Make sure to listen to ``error`` events to see possible errors/warnings:
+
+.. code-block:: javascript
+
+    client.on('error', function (err, event) {
+        console.log(event.name, err.stack);
+    });
+
+You can also add the ``err`` parameter to any event listener (change from ``function (event)`` to ``function (err, event)``:
+
+.. code-block:: javascript
+
+    client.on('whois', function (err, event) {
+        if (err) console.log("WHOIS ERROR:", err.stack);
+        console.log("whois:", event);
+    });
+
+
 .. coffeaevent:: errors
 
 The ``errors`` event, fired when IRC errors are received. List of possible errors: https://github.com/williamwicks/irc-replies/blob/master/replies.json#L113-L170
@@ -18,7 +40,7 @@ Example:
 
 .. code-block:: javascript
 
-    client.on('errors', function (event) {
+    client.on('errors', function (err, event) {
         console.error('IRC Error:', err);
     });
 
